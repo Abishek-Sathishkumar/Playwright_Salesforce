@@ -18,15 +18,21 @@ export class LoginPage {
 
   // Navigate to login page
   async goto() {
+    console.log('Opening Salesforce login page...');
     await this.page.goto('/');
-    await expect(this.page).toHaveTitle(/Salesforce/);
+    await this.page.locator('#username').waitFor({ timeout: 15000 });
+    console.log('Login page loaded');
   }
 
   // Perform login
   async login(username: string, password: string) {
+    console.log('Entering username...');
     await this.usernameField.fill(username);
+    console.log('Entering password...');
     await this.passwordField.pressSequentially(password, { delay: 100 });
+    console.log('Clicking login...');
     await this.loginButton.click();
+    await this.page.waitForLoadState('networkidle');
   }
 
   // Verify login success
@@ -38,4 +44,6 @@ export class LoginPage {
   async verifyLoginFailure() {
     await expect(this.errorMessage).toBeVisible({ timeout: 5000 });
   }
+
+  
 }
