@@ -31,7 +31,7 @@ export default defineConfig({
     },
 
     // 🔥 Load saved session
-    storageState: 'playwright/.auth/user.json',
+    storageState: process.env.CI ? undefined : 'playwright/.auth/user.json',
 
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
