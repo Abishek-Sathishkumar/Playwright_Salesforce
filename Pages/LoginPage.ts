@@ -19,9 +19,12 @@ export class LoginPage {
   // Navigate to login page
   async goto() {
     console.log('Opening Salesforce login page...');
-    await this.page.goto('/');
+    await this.page.goto('https://codewithab-dev-ed.develop.my.salesforce.com');
+    // await this.page.goto('/');
+    
     await this.page.locator('#username').waitFor({ timeout: 15000 });
     console.log('Login page loaded');
+    await this.page.waitForLoadState('load');
   }
 
   // Perform login
