@@ -18,9 +18,10 @@ export default defineConfig({
 
   use: {
     // 🔥 VERY IMPORTANT: Use your instance URL (not login.salesforce.com)
-    baseURL: 'https://codewithab-dev-ed.develop.my.salesforce.com',
+    //baseURL: 'https://codewithab-dev-ed.develop.my.salesforce.com',
+    baseURL: 'https://login.salesforce.com',
 
-    headless: false,
+    headless: process.env.CI ? true : false,
 
     launchOptions: {
       args: [
