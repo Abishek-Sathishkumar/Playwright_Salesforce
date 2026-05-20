@@ -12,10 +12,10 @@ test.describe('Salesforce Login Setup', () => {
     await loginPage.goto();
 
     // Step 2: Perform login (OTP will come ONLY here)
-    await loginPage.login(ENV.SF_USERNAME, ENV.SF_PASSWORD);
+    await loginPage.login(process.env.SF_USERNAME!,process.env.SF_PASSWORD!);
 
      // 🔥 Pause here to enter OTP manually
-    await page.pause();
+    //await page.pause();
 
     // After OTP, resume manually
 
